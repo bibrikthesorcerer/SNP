@@ -1,7 +1,7 @@
 # Author: Ignat Sakhovsky
 # Email: ignatsahovsky@gmail.com
 
-def max_odd(arr):
+def max_odd(arr:list):
     """
     Find the maximum odd number in a given array.
 
@@ -11,7 +11,8 @@ def max_odd(arr):
     Returns:
         int or None: The maximum odd number in the array, or None if no odd number is found.
     """
-    res = -1
+    flag = False
+    res = arr[0]
     for elem in arr:
         if not isinstance(elem, int):
             try:
@@ -20,4 +21,5 @@ def max_odd(arr):
                 continue
         if elem % 2 != 0 and elem > res:
             res = elem
-    return None if res == -1 else res
+            flag = True
+    return None if not flag else res

@@ -13,5 +13,7 @@ def date_in_future(days=0):
     Returns:
         str: A string representing the date and time in the format "%d-%m-%Y %H:%M:%S".
     """
+    if isinstance(days, int) is False:
+        days = 0
     date = datetime.datetime.now() + datetime.timedelta(days=days)
     return date.strftime("%d-%m-%Y %H:%M:%S")

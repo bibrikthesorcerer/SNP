@@ -42,7 +42,6 @@ def is_palindrome(string):
         s_len = len(s_format)
         # check if string is palindrome
         for i in range(0, int(s_len/2)):
-            print(f"{s_format[i]} ? {s_format[s_len - i - 1]}")
             if (s_format[i] != s_format[s_len - i - 1]):
                 return False
             

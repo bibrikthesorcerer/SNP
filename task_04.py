@@ -1,7 +1,7 @@
 # Author: Ignat Sakhovsky
 # Email: ignatsahovsky@gmail.com
 
-def sort_list(lst):
+def sort_list(lst:list):
     """
     Swaps all minimum and maximum values in a list and appends one minimum to the end
     
