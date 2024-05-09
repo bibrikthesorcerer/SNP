@@ -1,20 +1,16 @@
 # Author: Ignat Sakhovsky
 # Email: ignatsahovsky@gmail.com
 
-def combine_anagrams(words: list):
-    anagr_dict = dict()
+def combine_anagrams(words: list[str]) -> list[list[str]]:
+    """
+    Cluster words based on sets of letters they're made of.
+    """
+    anagr_dict = {}
 
     for word in words:
         # сортируем слово в алфавитном порядке
         w_sorted = "".join(sorted(word))
-        # посмотрим что лежит в словаре по этому сортированному слову
-        anagr_lst = anagr_dict.get(w_sorted)
-        # если ничего, то инициализируем список по ключу
-        if anagr_lst is None:
-            anagr_dict.update({w_sorted: [word]})
-        # иначе добавим в список новое слово
-        else:
-            anagr_lst.append(word)
+        # достаем значение по отсортированной строке и либо инициализируем либо приписываем новое слово
+        anagr_dict[w_sorted] = anagr_dict.get(w_sorted, []) + [word]
+    # из всего словаря нам нужны лишь значения
     return list(anagr_dict.values())
-
-print(combine_anagrams(["cars", "for", "potatoes", "racs", "four", "scar", "creams", "scream"]))

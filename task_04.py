@@ -1,54 +1,48 @@
 # Author: Ignat Sakhovsky
 # Email: ignatsahovsky@gmail.com
 
-def sort_list(lst:list):
+def sort_list(lst: list[int]) -> list[int]:
     """
-    Swaps all minimum and maximum values in a list and appends one minimum to the end
-    
-    Parameters:
-        lst (list): A list of numbers to be swapped
-    
-    Returns:
-        list: List with swapped values and additional minimum appended
+    Swap all minimum and maximum values in a list and append one minimum to the end
     """
-    # init lists of indexes for swapping
+    # с пустыми массивами не работаем
+    if not lst:
+        return lst
+
+    # списки индексов - после прохода цикла по списку lst здесь будут лежать
+    # индексы минимальных и максимальных значений в списке
     max_ind = [0,]
     min_ind = [0,]
-    # init min and max values
-    max = lst[0]
-    min = lst[0]
+    
+    # по умолчанию считаем максимальным элементом первый
+    max_num = lst[0]
+    min_num = lst[0]
 
-    for elem in lst:
-        # if found new min
-        if elem < min:
-            # clear old min indexes
+    for i in range(len(lst)):
+        # если нашли новый минимум, то очистим старые индексы, внесём новый и обновим минимум
+        if lst[i] < min_num:
             min_ind.clear()
-            # add new min index
             min_ind.append(i)
-            # update min
-            min = elem
+            min_num = lst[i]
 
-        # if found new max
-        if elem > max:
-            # clear old max indexes
+        # если нашли новый максимум, то поступаем как с минимумом
+        if lst[i] > max_num:
             max_ind.clear()
-            # add new max index
             max_ind.append(i)
-            # update max
-            max = elem
+            max_num = lst[i]
         
-        # if found equal, add new index to the list
-        if elem == min:
+        # если нашли новый индекс максимума или минимума, добавляем
+        if lst[i] == min_num:
             min_ind.append(i)
-        if elem == max:
+        if lst[i] == max_num:
             max_ind.append(i)
     
-    # swap values
+    # меняем максимумы и минимумы
     for i in max_ind:
-        lst[i] = min
+        lst[i] = min_num
     for i in min_ind:
-        lst[i] = max
+        lst[i] = max_num
     
-    # append minimum to the end
-    lst.append(min)
+    # добавляем минимум в конец списка
+    lst.append(min_num)
     return lst
