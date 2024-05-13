@@ -11,7 +11,7 @@ def rm_punct_and_lower(string: str) -> str:
     # всю пунктуацию выкидываем, из кортежа берем только строку
     f_string = (re.subn(fr"[{s.punctuation}]", "",string))[0]
     # заглавные буквы меняем на прописные
-    return f_string.lower()
+    return f_string.casefold()
 
 def count_words(string: str) -> dict:
     """
@@ -26,5 +26,5 @@ def count_words(string: str) -> dict:
     
     for w in words:
         # если слово в словаре уже есть, увеличим количество вхождений, иначе инициализируем единицей
-        freq_of_use[w] = freq_of_use.get(w, default=0) + 1
+        freq_of_use[w] = freq_of_use.get(w, 0) + 1
     return freq_of_use

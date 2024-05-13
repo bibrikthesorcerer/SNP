@@ -13,7 +13,7 @@ def format_palindrome(string: str) -> str:
     f_string = re.subn(fr"[{s.punctuation}{s.whitespace}]", "",string)[0]
 
     # replace uppercase with lowercase letters
-    return f_string.lower()
+    return f_string.casefold()
 
 def is_palindrome(string) -> bool:
     """
