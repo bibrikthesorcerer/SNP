@@ -3,26 +3,26 @@
 
 class Dessert():
     def __init__(self, name: str="", calories: int=0):
-        self.__name = name
-        self.__calories = calories
+        self.name = name
+        self.calories = calories
     
     def __str__(self) -> str:
-        return f"Dessert {self.__name} with {self.__calories} calories"
+        return f"Dessert {self.name} with {self.calories} calories"
 
     def get_name(self) -> str:
-        return self.__name
+        return self.name
     
     def get_calories(self) -> int:
-        return self.__calories
+        return self.calories
     
     def set_name(self, new_name: str):
-        self.__name = new_name
+        self.name = new_name
     
     def set_calories(self, new_cals: int):
-        self.__calories = new_cals
+        self.calories = new_cals
 
     def is_healthy(self) -> bool:
-        return self.__calories < 200
+        return int(self.calories) < 200
     
     def is_delicious(self) -> bool:
         return True
@@ -30,16 +30,16 @@ class Dessert():
 class JellyBean(Dessert):
     def __init__(self, name: str="", calories: int=0, flavor: str=""):
         super().__init__(name, calories)
-        self.__flavor = flavor
+        self.flavor = flavor
     
     def __str__(self) -> str:
-        return f"Jelly bean {self.get_name()} with {self.get_calories()} callories and a flavor of {self.__flavor}"
+        return f"Jelly bean {self.get_name()} with {self.get_calories()} callories and a flavor of {self.flavor}"
 
     def get_flavor(self) -> str:
-        return self.__flavor
+        return self.flavor
     
     def set_flavor(self, flavor: str):
-        self.__flavor = flavor
+        self.flavor = flavor
 
     def is_delicious(self) -> bool:
-        return self.__flavor != "black licorice"
+        return str(self.flavor) != "black licorice"
