@@ -3,43 +3,52 @@
 
 class Dessert():
     def __init__(self, name: str="", calories: int=0):
-        self.name = name
-        self.calories = calories
+        self._name = name
+        self._calories = calories
     
     def __str__(self) -> str:
-        return f"Dessert {self.name} with {self.calories} calories"
+        return f"Dessert {self._name} with {self._calories} calories"
 
     def get_name(self) -> str:
-        return self.name
+        return self._name
     
     def get_calories(self) -> int:
-        return self.calories
+        return self._calories
     
     def set_name(self, new_name: str):
-        self.name = new_name
+        self._name = new_name
     
     def set_calories(self, new_cals: int):
-        self.calories = new_cals
+        self._calories = new_cals
 
     def is_healthy(self) -> bool:
-        return int(self.calories) < 200
+        try:
+            return int(self._calories) < 200
+        except ValueError:
+            print("Cannot convert calories to int.")
+            return None
     
     def is_delicious(self) -> bool:
         return True
     
+    name = property(get_name, set_name)
+    calories = property(get_calories, set_calories)
+    
 class JellyBean(Dessert):
     def __init__(self, name: str="", calories: int=0, flavor: str=""):
         super().__init__(name, calories)
-        self.flavor = flavor
+        self._flavor = flavor
     
     def __str__(self) -> str:
-        return f"Jelly bean {self.get_name()} with {self.get_calories()} callories and a flavor of {self.flavor}"
+        return f"Jelly bean {self.name} with {self.name} calories and a flavor of {self._flavor}"
 
     def get_flavor(self) -> str:
-        return self.flavor
+        return self._flavor
     
     def set_flavor(self, flavor: str):
-        self.flavor = flavor
+        self._flavor = flavor
 
     def is_delicious(self) -> bool:
-        return str(self.flavor) != "black licorice"
+        return str(self._flavor) != "black licorice"
+    
+    flavor = property(get_flavor, set_flavor)
